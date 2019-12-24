@@ -1,0 +1,25 @@
+{
+  "name": "accessible-modal",
+  "version": "1.0.0",
+  "description": "Accessible modal dialog component",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "author": "Pamela Hicks <pamelasusanhicks@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.24",
+    "jest": "^24.9.0",
+    "sass": "^1.24.0",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "test": "jest --config jestconfig.json"
+  },
+  "prepublish": "tsc"
+}
