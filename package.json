@@ -9,6 +9,9 @@
   ],
   "author": "Pamela Hicks <pamelasusanhicks@gmail.com>",
   "license": "MIT",
+  "repository": "github:pamelahicks/accessible-modal",
+  "homepage": "https://github.com/pamelahicks/accessible-modal",
+  "bugs": "https://github.com/pamelahicks/accessible-modal/issues",
   "devDependencies": {
     "@types/jest": "^24.0.24",
     "jest": "^24.9.0",
@@ -19,7 +22,14 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "test": "jest --config jestconfig.json"
+    "test": "jest --config jestconfig.json",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "tsc"
   },
-  "prepublish": "tsc"
+  "keywords": [
+    "dialog",
+    "a11y",
+    "modal",
+    "focus"
+  ]
 }
