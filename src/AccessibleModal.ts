@@ -61,12 +61,7 @@ export class AccessibleModal {
 
   private init(): void {
     // Set up the backdrop if required
-    if (this.backdropClass) {
-      const newBackdrop = document.createElement('div');
-      newBackdrop.classList.add(this.backdropClass);
-      newBackdrop.setAttribute('aria-hidden', 'true');
-      this.DOM.backdropEl = newBackdrop;
-    }
+    this.backdropClass && this.setBackdrop(this.backdropClass);
 
     // Set up the modal container
     const modal = document.createElement('div');
@@ -85,6 +80,16 @@ export class AccessibleModal {
     // Mount the things
     this.DOM.backdropEl && document.body.appendChild(this.DOM.backdropEl);
     document.body.appendChild(this.DOM.modal);
+  }
+
+  private setBackdrop(backdropClass: string) {
+    const newBackdrop = document.createElement('div');
+    newBackdrop.classList.add(backdropClass);
+    newBackdrop.setAttribute('aria-hidden', 'true');
+    newBackdrop.setAttribute('tabindex', '-1');
+    newBackdrop.addEventListener('click', this.close.bind(this));
+
+    this.DOM.backdropEl = newBackdrop;
   }
 
   private setButton(el: HTMLElement) {
