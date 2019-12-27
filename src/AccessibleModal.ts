@@ -1,3 +1,4 @@
+import { closeButton } from './closeButton';
 import { FocusTrap } from './FocusTrap';
 import { KEY_ESC } from './keys';
 
@@ -11,6 +12,7 @@ interface Options {
 interface DOM {
   modal: HTMLElement | null;
   backdropEl?: HTMLElement;
+  closeBtnEl: HTMLElement | null;
 }
 
 export class AccessibleModal {
@@ -34,6 +36,7 @@ export class AccessibleModal {
     this.newFocusTrap = null;
 
     this.DOM = {
+      closeBtnEl: null,
       modal: null,
     };
 
@@ -41,9 +44,9 @@ export class AccessibleModal {
   }
 
   public open(el: HTMLElement): void {
-    const modal = this.DOM.modal;
+    const { modal } = this.DOM;
 
-    this.setButton(el);
+    this.setCloseButton(el);
     this.setAriaLabels(el);
 
     // Toggle the modal visibility class
@@ -92,15 +95,13 @@ export class AccessibleModal {
     this.DOM.backdropEl = newBackdrop;
   }
 
-  private setButton(el: HTMLElement) {
-    // Find the close button
-    const closeBtn = el.querySelector(`.${this.closeBtnClass}`);
-
-    closeBtn?.setAttribute('type', 'button');
-    closeBtn?.addEventListener('click', this.close.bind(this));
-
-    if (closeBtn?.getAttribute('aria-label') == null) {
-      closeBtn?.setAttribute('aria-label', 'Close dialog');
+  private setCloseButton(el: HTMLElement) {
+    if (this.closeBtnClass) {
+      this.DOM.closeBtnEl = closeButton(
+        el,
+        this.closeBtnClass,
+        this.close.bind(this),
+      );
     }
   }
 
