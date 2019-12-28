@@ -6,7 +6,7 @@ Creates a modal container before the `</body>` tag and optional overlay to act a
 yarn add accessible-modal
 ```
 
-## API
+## Usage
 
 1. **Create a modal**
 
@@ -40,10 +40,10 @@ modal.open(document.querySelector('.modal'));
 
 ## Closing the modal
 
-If a `closeBtnClass` is passed in the options, it will be queried for in the HTML element passed on `open()` and if no such element exists, a `button` will be created and appended with the appropriate attributes. An event listenter will be attached to provide close functionality.\
-If no `closeBtnClass` is passed, no button will be created and no element will have the `close()` event listener attached.\
-If `backdropClass` is passed in the options a backdrop layer will be created which will close the modal on click.\
-The `esc` key will close the modal.
+- If a `closeBtnClass` is passed in the options, it will be queried for in the HTML element passed on `open()` and if no such element exists, a `button` will be created and appended with the appropriate attributes. An event listenter will be attached to provide close functionality.
+- If no `closeBtnClass` is passed, no button will be created and no element will have the `close()` event listener attached.
+- If `backdropClass` is passed in the options a backdrop layer will be created which will close the modal on click.
+- The `esc` key will close the modal.
 
 ## Options
 
@@ -69,4 +69,4 @@ On `open()`, `aria-hidden` is set to `false` on three elements:
 2. The modal created on instantiation
 3. The HTML element passed to the `open()` method
 
-therefore `[aria-hidden="true"] { display: none; }` is convenient css to hide the backdrop layer and the modal if pre-rendered in the markup.
+therefore `[aria-hidden="true"] { display: none; }` is convenient CSS to hide the backdrop layer as well as the modal if it is pre-rendered in the markup.
